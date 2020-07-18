@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t arpit1294/devops-workflow -f Dockerfile.dev .
+
+script:
+    - docker container run arpit1294/devops-workflow  npm run test -- --coverage
