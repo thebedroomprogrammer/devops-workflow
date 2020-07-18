@@ -12,7 +12,7 @@ deploy:
     provider: elasticbeanstalk
     region: "ap-south-1"
     app: "devops-workflow"
-    env: "DevopsWorkflow-env"
+    env: "DevopsWorkflow-env-2"
     bucket_name: "elasticbeanstalk-ap-south-1-313308058738"
     bucket_path: "devops-workflow"
     on:
