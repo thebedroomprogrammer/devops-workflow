@@ -7,3 +7,16 @@ before_install:
 
 script:
     - docker container run -e CI=true arpit1294/devops-workflow  npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "devops-workflow"
+    env: "DevopsWorkflow-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-313308058738"
+    bucket_path: "devops-workflow"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
