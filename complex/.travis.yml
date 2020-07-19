@@ -1,0 +1,21 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t arpit1294/devops-workflow-react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker container run -e CI=true arpit1294/devops-workflow-react-test  npm run test -- --coverage
+
+
+after_success:
+    - docker build -t arpit1294/multi-client ./client
+    - docker build -t arpit1294/multi-nginx ./nginx
+    - docker build -t arpit1294/multi-server ./server
+    - docker build -t arpit1294/multi-worker ./worker
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push arpit1294/multi-client
+    - docker push arpit1294/multi-nginx
+    - docker push arpit1294/multi-server
+    - docker push arpit1294/multi-worker
