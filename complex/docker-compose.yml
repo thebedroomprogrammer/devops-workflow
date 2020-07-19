@@ -23,7 +23,7 @@ services:
             - ./server:/app
         environment: 
             - REDIS_HOST=redis
-            - REDIS_PORS=6379
+            - REDIS_PORT=6379
             - PGHOST=postgres
             - PGUSER=postgres
             - PGPORT=5432
