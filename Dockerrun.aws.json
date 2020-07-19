@@ -6,25 +6,25 @@
             "image":"arpit1294/multi-client",
             "hostname":"client",
             "essential":false,
-            "memory":128
+            "memory":256
         } , {
             "name":"server",
             "image":"arpit1294/multi-server",
             "hostname":"api",
             "essential":false,
-            "memory":128
+            "memory":256
         } , {
             "name":"worker",
             "image":"arpit1294/multi-worker",
             "hostname":"worker",
             "essential":false,
-            "memory":128
+            "memory":256
         } , {
             "name":"nginx",
             "image":"arpit1294/multi-nginx",
             "hostname":"nginx",
             "essential":true,
-            "memory":128,
+            "memory":256,
             "portMappings":[
                 {
                     "hostPort":80,
