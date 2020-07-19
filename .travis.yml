@@ -19,3 +19,15 @@ after_success:
     - docker push arpit1294/multi-nginx
     - docker push arpit1294/multi-server
     - docker push arpit1294/multi-worker
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "MultiDocker"
+    env: "Multidocker-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-313308058738"
+    bucket_path: "MultiDocker"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY

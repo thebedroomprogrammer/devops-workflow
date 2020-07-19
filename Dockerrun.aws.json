@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions":[
+        {
+            "name":"client",
+            "image":"arpit1294/multi-client",
+            "hostname":"client",
+            "essential":false
+        } , {
+            "name":"server",
+            "image":"arpit1294/multi-server",
+            "hostname":"api",
+            "essential":false
+        } , {
+            "name":"worker",
+            "image":"arpit1294/multi-worker",
+            "hostname":"worker",
+            "essential":false
+        } , {
+            "name":"nginx",
+            "image":"arpit1294/multi-nginx",
+            "hostname":"nginx",
+            "essential":true,
+            "portMappings":[
+                {
+                    "hostPort":80,
+                    "containerPort":80
+                }
+            ],
+            "links":[
+                "client","server"
+            ]
+        } 
+    
+    ]
+
+}
